@@ -1,3 +1,14 @@
+export type ServiceColor = "blue" | "green" | "purple";
+
+export type Service = {
+  id: string;
+  icon: string;
+  title: string;
+  description: string;
+  features: string[];
+  color: ServiceColor;
+};
+
 export const siteConfig = {
   name: "Geetorus",
   tagline: "Building the Future of Cybersecurity & AI",
@@ -27,7 +38,7 @@ export const navLinks = [
   { label: "Contact", href: "/contact" },
 ];
 
-export const services = [
+export const services: Service[] = [
   {
     id: "cybersecurity-consulting",
     icon: "Shield",

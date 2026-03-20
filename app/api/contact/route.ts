@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import nodemailer from "nodemailer";
 
 const ADMIN_EMAIL = process.env.CONTACT_EMAIL || "Geetorus@gmail.com";
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
@@ -49,10 +50,9 @@ async function sendSMTPEmail({
   subject: string;
   text: string;
 }) {
-  const nodemailer = require("nodemailer");
   const transporter = nodemailer.createTransport({
     host: SMTP_HOST,
-    port: parseInt(SMTP_PORT || "587"),
+    port: Number(SMTP_PORT) || 587,
     secure: SMTP_PORT === "465",
     auth: {
       user: SMTP_USER,

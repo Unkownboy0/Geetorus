@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import nodemailer from "nodemailer";
 import { blogPosts } from "@/lib/blogPosts";
 
 const ADMIN_EMAIL = process.env.SUBSCRIBE_TO_EMAIL || process.env.CONTACT_EMAIL;
@@ -128,8 +129,6 @@ export async function POST(req: Request) {
   // Fallback to SMTP (nodemailer) if configured
   if (doSmtpFallback && SMTP_HOST && SMTP_USER && SMTP_PASS) {
     try {
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
-      const nodemailer = require("nodemailer");
       const transporter = nodemailer.createTransport({
         host: SMTP_HOST,
         port: Number(SMTP_PORT) || 587,
@@ -160,10 +159,11 @@ export async function POST(req: Request) {
         success: true,
         message: "Thanks! You've been subscribed and a welcome email has been sent.",
       });
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("[subscribe] failed sending email", err);
 
-      if (err?.code === "EAUTH" || (err?.responseCode === 534 && /Application-specific password required/i.test(err?.response || ""))) {
+      const smtpError = err as { code?: string; responseCode?: number; response?: string };
+      if (smtpError?.code === "EAUTH" || (smtpError?.responseCode === 534 && /Application-specific password required/i.test(smtpError?.response || ""))) {
         return NextResponse.json(
           {
             success: false,

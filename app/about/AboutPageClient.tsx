@@ -139,7 +139,7 @@ export default function AboutPageClient() {
                       Currently studying at <span className="text-white font-medium">Al-Ameen Engineering College</span>, Udhayakumar is an ambitious multidomain expert identifying as a future CISO, experienced network engineer, InfoSec researcher, data engineer, and AI explorer.
                     </p>
                     <p className="text-gray-500 leading-relaxed mb-4">
-                      He is the driving force behind <span className="text-[#10b981] font-medium">Geetorus LearnHub</span>, an exclusive digital ecosystem equipping the next generation of tech leaders with a "Security-First" mindset, bridging the crucial gap between traditional software development and advanced proactive cybersecurity.
+                      He is the driving force behind <span className="text-[#10b981] font-medium">Geetorus LearnHub</span>, an exclusive digital ecosystem equipping the next generation of tech leaders with a &quot;Security-First&quot; mindset, bridging the crucial gap between traditional software development and advanced proactive cybersecurity.
                     </p>
                     <p className="text-gray-500 leading-relaxed mb-6">
                       Geetorus is the ultimate culmination of this vision: a platform that combines cutting-edge security services, AI tooling, and powerful accessible education to create the next generation of cyber defenders.

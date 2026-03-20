@@ -8,14 +8,13 @@ export async function generateStaticParams() {
   return services.map((service) => ({ serviceId: service.id }));
 }
 
-type Props = {
-  params: {
-    serviceId: string;
-  };
-};
+interface Props {
+  params: Promise<{ serviceId: string }>;
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const service = services.find((s) => s.id === params.serviceId);
+  const { serviceId } = await params;
+  const service = services.find((s) => s.id === serviceId);
   if (!service) return { title: "Service" };
   return {
     title: service.title,
@@ -23,8 +22,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function ServicePage({ params }: Props) {
-  const service = services.find((s) => s.id === params.serviceId);
+export default async function ServicePage({ params }: Props) {
+  const { serviceId } = await params;
+  const service = services.find((s) => s.id === serviceId);
   if (!service) return notFound();
 
   return <ServicePageClient service={service} />;

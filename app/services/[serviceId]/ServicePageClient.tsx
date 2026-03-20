@@ -6,14 +6,7 @@ import { ArrowLeft, Check } from "lucide-react";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import GlassCard from "@/components/ui/GlassCard";
 import SectionBadge from "@/components/ui/SectionBadge";
-
-export type Service = {
-  id: string;
-  title: string;
-  description: string;
-  features: string[];
-  color: "blue" | "green" | "purple";
-};
+import type { Service } from "@/lib/constants";
 
 function pickColors(color: Service["color"]) {
   switch (color) {
