@@ -25,11 +25,11 @@ export default function Footer() {
               <Link href="/" className="flex items-center gap-3 md:gap-4 mb-6 group">
                 <div className="relative flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-xl transition-transform duration-300 group-hover:scale-105 shrink-0">
                   {/* Animated Glow Background */}
-                  <div className="absolute inset-0 rounded-xl opacity-60 blur-md bg-gradient-to-r from-[#00f0ff] via-[#8b5cf6] to-[#00f0ff] animate-gradient-shift group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 rounded-xl opacity-0 blur-md bg-gradient-to-r from-[#6b7280] via-[#6366f1] to-[#6b7280] transition-opacity duration-500" />
 
                   {/* Dark inner container */}
                   <div className="absolute inset-[1px] rounded-xl bg-[#0a0a0a] z-0 flex items-center justify-center overflow-hidden"
-                    style={{ border: "1px solid rgba(0,240,255,0.3)" }}>
+                    style={{ border: "1px solid rgba(107,114,128,0.3)" }}>
                     {/* Logo Image with Invert Filter */}
                     <img
                       src="/logo.png"
@@ -53,7 +53,7 @@ export default function Footer() {
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center w-9 h-9 rounded-lg text-gray-500 hover:text-[#00f0ff] transition-all duration-200 hover:scale-110"
+                    className="flex items-center justify-center w-9 h-9 rounded-lg text-gray-500 hover:text-[#6b7280] transition-all duration-200 hover:scale-110"
                     style={{ border: "1px solid rgba(255,255,255,0.07)" }}
                     aria-label={key}
                   >
@@ -73,7 +73,7 @@ export default function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-sm text-gray-500 hover:text-[#00f0ff] transition-colors"
+                      className="text-sm text-gray-500 hover:text-[#6b7280] transition-colors"
                     >
                       {link.label}
                     </Link>
@@ -92,7 +92,7 @@ export default function Footer() {
                   <li key={s.id}>
                     <Link
                       href="/services"
-                      className="text-sm text-gray-500 hover:text-[#00f0ff] transition-colors"
+                      className="text-sm text-gray-500 hover:text-[#6b7280] transition-colors"
                     >
                       {s.title}
                     </Link>
@@ -108,16 +108,16 @@ export default function Footer() {
               </h3>
               <ul className="space-y-4">
                 <li className="flex items-start gap-3">
-                  <Mail size={15} className="text-[#00f0ff] mt-0.5 shrink-0" />
+                      <Mail size={15} className="text-[#6b7280] mt-0.5 shrink-0" />
                   <a
                     href={`mailto:${siteConfig.email}`}
-                    className="text-sm text-gray-500 hover:text-[#00f0ff] transition-colors"
+                    className="text-sm text-gray-500 hover:text-[#6b7280] transition-colors"
                   >
                     {siteConfig.email}
                   </a>
                 </li>
                 <li className="flex items-start gap-3">
-                  <MapPin size={15} className="text-[#00f0ff] mt-0.5 shrink-0" />
+                  <MapPin size={15} className="text-[#6b7280] mt-0.5 shrink-0" />
                   <span className="text-sm text-gray-500">{siteConfig.location}</span>
                 </li>
                 <li>
@@ -125,7 +125,7 @@ export default function Footer() {
                     href="https://udhayauk-2907.netlify.app"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-sm text-gray-500 hover:text-[#00f0ff] transition-colors"
+                    className="flex items-center gap-1.5 text-sm text-gray-500 hover:text-[#6b7280] transition-colors"
                   >
                     <ExternalLink size={14} />
                     Founder Portfolio

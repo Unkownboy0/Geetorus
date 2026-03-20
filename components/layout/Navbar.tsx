@@ -41,16 +41,16 @@ export default function Navbar() {
           <Link href="/" className="flex items-center gap-3 md:gap-4 group">
             <div className="relative flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-xl transition-transform duration-300 group-hover:scale-105 shrink-0">
               {/* Animated Glow Background */}
-              <div className="absolute inset-0 rounded-xl opacity-60 blur-md bg-gradient-to-r from-[#00f0ff] via-[#8b5cf6] to-[#00f0ff] animate-gradient-shift group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 rounded-xl opacity-0 blur-md bg-gradient-to-r from-[#6b7280] via-[#6366f1] to-[#6b7280] group-hover:opacity-0 transition-opacity duration-500" />
               
               {/* Dark inner container */}
               <div className="absolute inset-[1px] rounded-xl bg-[#0a0a0a] z-0 flex items-center justify-center overflow-hidden"
-                   style={{ border: "1px solid rgba(0,240,255,0.3)" }}>
+                   style={{ border: "1px solid rgba(107,114,128,0.2)" }}>
                 {/* Logo Image with Invert Filter */}
                 <img 
                   src="/logo.png" 
                   alt="Geetorus Logo" 
-                  className="relative z-10 w-full h-full object-contain p-1.5 filter invert opacity-90 group-hover:opacity-100 transition-opacity drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]" 
+                  className="relative z-10 w-full h-full object-contain p-1.5 filter invert opacity-90 group-hover:opacity-100 transition-opacity" 
                 />
               </div>
             </div>
@@ -69,7 +69,7 @@ export default function Navbar() {
                 className={cn(
                   "text-sm font-medium animated-underline transition-colors duration-200",
                   pathname === link.href
-                    ? "text-[#00f0ff]"
+                    ? "text-[#6b7280]"
                     : "text-gray-400 hover:text-white"
                 )}
               >
@@ -84,8 +84,8 @@ export default function Navbar() {
               href="/contact"
               className="px-5 py-2 rounded-lg text-sm font-semibold text-[#0a0a0a] transition-all duration-300 hover:scale-105"
               style={{
-                background: "linear-gradient(135deg, #00f0ff, #8b5cf6)",
-                boxShadow: "0 0 20px rgba(0,240,255,0.3)"
+                background: "linear-gradient(135deg, #6b7280, #6366f1)",
+                boxShadow: "none"
               }}
             >
               Get Started
@@ -127,7 +127,7 @@ export default function Navbar() {
                     href={link.href}
                     className={cn(
                       "text-2xl font-semibold transition-colors",
-                      pathname === link.href ? "text-[#00f0ff]" : "text-gray-300 hover:text-white"
+                      pathname === link.href ? "text-[#6b7280]" : "text-gray-300 hover:text-white"
                     )}
                   >
                     {link.label}
@@ -142,7 +142,7 @@ export default function Navbar() {
                 <Link
                   href="/contact"
                   className="mt-4 px-8 py-3 rounded-xl text-base font-bold text-[#0a0a0a]"
-                  style={{ background: "linear-gradient(135deg, #00f0ff, #8b5cf6)" }}
+                  style={{ background: "linear-gradient(135deg, #6b7280, #6366f1)" }}
                 >
                   Get Started
                 </Link>

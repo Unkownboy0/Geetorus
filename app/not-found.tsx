@@ -11,7 +11,7 @@ export default function NotFound() {
       <CyberBackground />
       <div
         className="absolute inset-0"
-        style={{ background: "radial-gradient(ellipse at 50% 40%, rgba(0,240,255,0.07), transparent 70%)" }}
+        style={{ background: "radial-gradient(ellipse at 50% 40%, rgba(107,114,128,0.07), transparent 70%)" }}
       />
       <div className="relative z-10 text-center px-6">
         <motion.div
@@ -22,7 +22,7 @@ export default function NotFound() {
           <div
             className="text-[12rem] font-black font-poppins leading-none mb-4"
             style={{
-              background: "linear-gradient(135deg, #00f0ff, #8b5cf6)",
+              background: "linear-gradient(135deg, #6b7280, #6366f1)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
@@ -34,7 +34,7 @@ export default function NotFound() {
           <div
             className="text-8xl font-black font-poppins -mt-20 mb-6"
             style={{
-              background: "linear-gradient(135deg, #00f0ff, #8b5cf6)",
+              background: "linear-gradient(135deg, #6b7280, #6366f1)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
@@ -49,15 +49,14 @@ export default function NotFound() {
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               href="/"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-[#0a0a0a] hover:scale-105 transition-transform"
-              style={{ background: "linear-gradient(135deg, #00f0ff, #8b5cf6)" }}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-white hover:scale-105 transition-transform bg-gradient-to-r from-slate-600 to-indigo-600"
             >
               <Home size={18} /> Go Home
             </Link>
             <button
               onClick={() => history.back()}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-[#00f0ff] hover:bg-[rgba(0,240,255,0.05)] transition-all"
-              style={{ border: "1px solid rgba(0,240,255,0.3)" }}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-[#6b7280] hover:bg-[rgba(107,114,128,0.05)] transition-all"
+              style={{ border: "1px solid rgba(107,114,128,0.3)" }}
             >
               <ArrowLeft size={18} /> Go Back
             </button>

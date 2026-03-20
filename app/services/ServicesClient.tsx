@@ -18,9 +18,9 @@ const iconMap: Record<string, React.ReactNode> = {
 };
 
 const colorMap = {
-  blue: { text: "#00f0ff", bg: "rgba(0,240,255,0.08)", border: "rgba(0,240,255,0.25)", glow: "rgba(0,240,255,0.15)" },
-  green: { text: "#00ff9f", bg: "rgba(0,255,159,0.08)", border: "rgba(0,255,159,0.25)", glow: "rgba(0,255,159,0.15)" },
-  purple: { text: "#8b5cf6", bg: "rgba(139,92,246,0.08)", border: "rgba(139,92,246,0.25)", glow: "rgba(139,92,246,0.15)" },
+  blue: { text: "#6b7280", bg: "rgba(107,114,128,0.08)", border: "rgba(107,114,128,0.15)", glow: "rgba(107,114,128,0.05)" },
+  green: { text: "#10b981", bg: "rgba(16,185,129,0.08)", border: "rgba(16,185,129,0.15)", glow: "rgba(16,185,129,0.05)" },
+  purple: { text: "#6366f1", bg: "rgba(99,102,241,0.08)", border: "rgba(99,102,241,0.15)", glow: "rgba(99,102,241,0.05)" },
 };
 
 export default function ServicesClient() {
@@ -53,36 +53,38 @@ export default function ServicesClient() {
               const c = colorMap[service.color as keyof typeof colorMap];
               return (
                 <ScrollReveal key={service.id} delay={i * 0.08}>
-                  <GlassCard className="p-8 h-full group" glowColor={service.color as "blue" | "green" | "purple"}>
-                    {/* Icon */}
-                    <div
-                      className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 group-hover:scale-110"
-                      style={{ background: c.bg, border: `1px solid ${c.border}`, color: c.text, boxShadow: `0 0 20px ${c.bg}` }}
-                    >
-                      {iconMap[service.icon]}
-                    </div>
-                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#00f0ff] transition-colors">
-                      {service.title}
-                    </h3>
-                    <p className="text-sm text-gray-500 leading-relaxed mb-6">{service.description}</p>
+                  <Link href={`/services/${service.id}`} className="block h-full">
+                    <GlassCard className="p-8 h-full group" glowColor={service.color as "blue" | "green" | "purple"}>
+                      {/* Icon */}
+                      <div
+                        className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 group-hover:scale-110"
+                        style={{ background: c.bg, border: `1px solid ${c.border}`, color: c.text, boxShadow: `0 0 20px ${c.bg}` }}
+                      >
+                        {iconMap[service.icon]}
+                      </div>
+                      <h3 className="text-xl font-bold text-white group-hover:text-[#6b7280] transition-colors">
+                        {service.title}
+                      </h3>
+                      <p className="text-sm text-gray-500 leading-relaxed mb-6">{service.description}</p>
 
-                    {/* Features */}
-                    <ul className="space-y-2 mb-6">
-                      {service.features.map((f) => (
-                        <li key={f} className="flex items-center gap-2 text-sm">
-                          <Check size={13} style={{ color: c.text }} className="shrink-0" />
-                          <span className="text-gray-400">{f}</span>
-                        </li>
-                      ))}
-                    </ul>
+                      {/* Features */}
+                      <ul className="space-y-2 mb-6">
+                        {service.features.map((f) => (
+                          <li key={f} className="flex items-center gap-2 text-sm">
+                            <Check size={13} style={{ color: c.text }} className="shrink-0" />
+                            <span className="text-gray-400">{f}</span>
+                          </li>
+                        ))}
+                      </ul>
 
-                    <div
-                      className="flex items-center gap-2 text-sm font-semibold group-hover:gap-3 transition-all mt-auto"
-                      style={{ color: c.text }}
-                    >
-                      Learn More <ArrowRight size={14} />
-                    </div>
-                  </GlassCard>
+                      <div
+                        className="flex items-center gap-2 text-sm font-semibold group-hover:gap-3 transition-all mt-auto"
+                        style={{ color: c.text }}
+                      >
+                        Learn More <ArrowRight size={14} />
+                      </div>
+                    </GlassCard>
+                  </Link>
                 </ScrollReveal>
               );
             })}
@@ -113,7 +115,7 @@ export default function ServicesClient() {
                 <Link
                   href="/contact"
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-[#0a0a0a] hover:scale-105 transition-transform"
-                  style={{ background: "linear-gradient(135deg, #00f0ff, #8b5cf6)", boxShadow: "0 0 30px rgba(0,240,255,0.3)" }}
+                  style={{ background: "linear-gradient(135deg, #6b7280, #6366f1)", boxShadow: "none" }}
                 >
                   Get a Free Consultation <ArrowRight size={18} />
                 </Link>

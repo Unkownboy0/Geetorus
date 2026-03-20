@@ -11,6 +11,7 @@ import { siteConfig } from "@/lib/constants";
 interface FormData {
   name: string;
   email: string;
+  phone: string;
   subject: string;
   message: string;
 }
@@ -18,6 +19,7 @@ interface FormData {
 interface FormErrors {
   name?: string;
   email?: string;
+  phone?: string;
   subject?: string;
   message?: string;
 }
@@ -37,6 +39,9 @@ function validateForm(data: FormData): FormErrors {
   if (!data.email.trim()) errors.email = "Email is required";
   else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) errors.email = "Enter a valid email address";
 
+  if (!data.phone.trim()) errors.phone = "Phone is required";
+  else if (!/^[\d\s\-\+\(\)]{7,}$/.test(data.phone)) errors.phone = "Enter a valid phone number";
+
   if (!data.subject.trim()) errors.subject = "Subject is required";
   else if (data.subject.trim().length < 5) errors.subject = "Subject must be at least 5 characters";
 
@@ -47,7 +52,7 @@ function validateForm(data: FormData): FormErrors {
 }
 
 export default function ContactClient() {
-  const [form, setForm] = useState<FormData>({ name: "", email: "", subject: "", message: "" });
+  const [form, setForm] = useState<FormData>({ name: "", email: "", phone: "", subject: "", message: "" });
   const [errors, setErrors] = useState<FormErrors>({});
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
@@ -76,7 +81,7 @@ export default function ContactClient() {
       });
       if (res.ok) {
         setStatus("success");
-        setForm({ name: "", email: "", subject: "", message: "" });
+        setForm({ name: "", email: "", phone: "", subject: "", message: "" });
       } else {
         setStatus("error");
       }
@@ -88,7 +93,7 @@ export default function ContactClient() {
   const inputClass = "w-full px-4 py-3.5 rounded-xl text-white text-sm placeholder-gray-600 focus:outline-none transition-all duration-200";
   const inputStyle = (field: keyof FormErrors): React.CSSProperties => ({
     background: "rgba(255,255,255,0.04)",
-    border: `1px solid ${errors[field] ? "rgba(247,37,133,0.5)" : "rgba(255,255,255,0.08)"}`,
+      border: `1px solid ${errors[field] ? "rgba(239,68,68,0.5)" : "rgba(107,114,128,0.2)"}`
   });
   const focusStyle = {
     boxShadow: "0 0 0 2px rgba(0,240,255,0.2)",
@@ -125,12 +130,12 @@ export default function ContactClient() {
                   <div className="space-y-5">
                     <div className="flex items-start gap-4">
                       <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
-                        style={{ background: "rgba(0,240,255,0.08)", border: "1px solid rgba(0,240,255,0.2)" }}>
-                        <Mail size={18} className="text-[#00f0ff]" />
+                        style={{ background: "rgba(107,114,128,0.08)", border: "1px solid rgba(107,114,128,0.2)" }}>
+                        <Mail size={20} className="text-[#6b7280]" />
                       </div>
                       <div>
-                        <p className="text-xs text-gray-600 mb-1">Email</p>
-                        <a href={`mailto:${siteConfig.email}`} className="text-sm text-gray-300 hover:text-[#00f0ff] transition-colors">
+                        <p className="text-xs text-gray-500 mb-2 font-medium">Email</p>
+                        <a href={`mailto:${siteConfig.email}`} className="text-sm text-gray-300 hover:text-[#6b7280] transition-colors">
                           {siteConfig.email}
                         </a>
                       </div>
@@ -138,7 +143,7 @@ export default function ContactClient() {
                     <div className="flex items-start gap-4">
                       <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
                         style={{ background: "rgba(0,255,159,0.08)", border: "1px solid rgba(0,255,159,0.2)" }}>
-                        <MapPin size={18} className="text-[#00ff9f]" />
+                        <MapPin size={18} className="text-[#10b981]" />
                       </div>
                       <div>
                         <p className="text-xs text-gray-600 mb-1">Location</p>
@@ -148,7 +153,7 @@ export default function ContactClient() {
                     <div className="flex items-start gap-4">
                       <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
                         style={{ background: "rgba(139,92,246,0.08)", border: "1px solid rgba(139,92,246,0.2)" }}>
-                        <Phone size={18} className="text-[#8b5cf6]" />
+                        <Phone size={18} className="text-[#6366f1]" />
                       </div>
                       <div>
                         <p className="text-xs text-gray-600 mb-1">Response Time</p>
@@ -171,7 +176,7 @@ export default function ContactClient() {
                         className="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-all group"
                         style={{ border: "1px solid rgba(255,255,255,0.06)" }}
                       >
-                        <span className="group-hover:text-[#00f0ff] transition-colors">{icon}</span>
+                        <span className="group-hover:text-[#6b7280] transition-colors">{icon}</span>
                         <span className="text-sm">{label}</span>
                       </a>
                     ))}
@@ -189,15 +194,15 @@ export default function ContactClient() {
                   {status === "success" ? (
                     <div
                       className="flex flex-col items-center justify-center py-16 text-center rounded-2xl"
-                      style={{ background: "rgba(0,255,159,0.05)", border: "1px solid rgba(0,255,159,0.2)" }}
+                      style={{ background: "rgba(16,185,129,0.05)", border: "1px solid rgba(16,185,129,0.2)" }}
                     >
-                      <CheckCircle size={48} className="text-[#00ff9f] mb-4" />
+                      <CheckCircle size={48} className="text-[#10b981] mb-4" />
                       <h3 className="text-xl font-bold text-white mb-2">Message Sent!</h3>
-                      <p className="text-gray-500">Thanks for reaching out. We&apos;ll get back to you within 24 hours.</p>
+                      <p className="text-gray-500">Your mail has been successfully sended</p>
                       <button
                         onClick={() => setStatus("idle")}
-                        className="mt-6 px-6 py-2.5 rounded-xl text-sm font-semibold text-[#00ff9f] hover:bg-[rgba(0,255,159,0.05)] transition-all"
-                        style={{ border: "1px solid rgba(0,255,159,0.3)" }}
+                        className="mt-6 px-6 py-2.5 rounded-xl text-sm font-semibold text-[#10b981] hover:bg-[rgba(16,185,129,0.05)] transition-all"
+                        style={{ border: "1px solid rgba(16,185,129,0.3)" }}
                       >
                         Send Another
                       </button>
@@ -235,6 +240,21 @@ export default function ContactClient() {
                           />
                           {errors.email && <p className="text-xs mt-1.5 flex items-center gap-1" style={{ color: "#f72585" }}><AlertCircle size={11} />{errors.email}</p>}
                         </div>
+                      </div>
+                      <div>
+                          <label className="block text-xs text-gray-500 mb-2 font-medium">Mobile Number *</label>
+                          <input
+                            type="tel"
+                            name="phone"
+                            value={form.phone}
+                            onChange={handleChange}
+                            placeholder="+91 98765 43210"
+                            className={inputClass}
+                            style={inputStyle("phone")}
+                            onFocus={(e) => Object.assign(e.target.style, focusStyle)}
+                            onBlur={(e) => { e.target.style.boxShadow = ""; e.target.style.borderColor = errors.phone ? "rgba(247,37,133,0.5)" : "rgba(255,255,255,0.08)"; }}
+                          />
+                          {errors.phone && <p className="text-xs mt-1.5 flex items-center gap-1" style={{ color: "#f72585" }}><AlertCircle size={11} />{errors.phone}</p>}
                       </div>
 
                       <div>
@@ -285,7 +305,7 @@ export default function ContactClient() {
                           style={{ background: "rgba(247,37,133,0.05)", border: "1px solid rgba(247,37,133,0.2)", color: "#f72585" }}
                         >
                           <AlertCircle size={16} />
-                          Something went wrong. Please try again.
+                          Try again So busy
                         </div>
                       )}
 
@@ -294,7 +314,7 @@ export default function ContactClient() {
                         disabled={status === "loading"}
                         className="w-full py-4 rounded-xl font-bold text-[#0a0a0a] text-sm hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
                         style={{
-                          background: "linear-gradient(135deg, #00f0ff, #8b5cf6)",
+                          background: "linear-gradient(135deg, #6b7280, #6366f1)",
                           boxShadow: "0 0 25px rgba(0,240,255,0.25)",
                         }}
                       >

@@ -3,7 +3,6 @@ import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import CustomCursor from "@/components/animations/CustomCursor";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -32,23 +31,66 @@ export const metadata: Metadata = {
     "ethical hacking",
     "AI security",
     "penetration testing",
+    "vulnerability assessment",
+    "network security",
+    "secure link scanning",
+    "cybersecurity consulting",
     "cybersecurity training",
+    "AI tools",
+    "Ai security tools",
+    "cybersecurity education",
+    "security awareness",
+    "threat detection",
+    "development",
+    "ai development",
+    "security tools",
+    "mechine learning",
+    "deep learning",
+    "natural language processing",
+    "cybersecurity blog",
+    "security news",
+    "infosec news",
+    "cybersecurity tips",
+    "security best practices",
+    "cybersecurity trends",
+    "cybersecurity careers",
+    "bug bounty tips",
+    "penetration testing tools",
+    "network security tools",
+    "web application security",
+    "cloud security",
+    "zero trust security",
+    "DevSecOps",
+    "bug bounty",
+    "infosec",
+    "zero trust",
+    "cloud security",
+    "DevSecOps",
     "Udhayakumar",
+    "Udhayakumar V",
+    "Udhaya uk",
+    "UDHAYA UK",
+    "GEETORUS",
+    "GEE",
+    "TORUS",
     "Erode",
     "Tamil Nadu",
     "India",
   ],
-  authors: [{ name: "Geetorus", url: "https://geetorus.com" }],
+  verification: {
+    google: "0Ititoojv8iFBfoiZQbNsTyix42vJY9YQ0StYD_4Z6U",
+  },
+  authors: [{ name: "Geetorus", url: "https://geetorus.netlify.app/" }],
   creator: "Geetorus",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://geetorus.com",
+    url: "https://geetorus.netlify.app/",
     siteName: "Geetorus",
     title: "Geetorus — Building the Future of Cybersecurity & AI",
     description:
       "Next-generation cybersecurity, AI tools, and education platform from India.",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Geetorus" }],
+    images: [{ url: "/logo.png", width: 1200, height: 630, alt: "Geetorus" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -70,7 +112,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
       <body>
-        <CustomCursor />
         <Navbar />
         <main>{children}</main>
         <Footer />

@@ -53,8 +53,8 @@ export default function CustomCursor() {
         <div
           className="w-3 h-3 rounded-full"
           style={{
-            background: "radial-gradient(circle, #00f0ff, #8b5cf6)",
-            boxShadow: "0 0 8px rgba(0,240,255,0.8), 0 0 20px rgba(0,240,255,0.4)",
+            background: "radial-gradient(circle, #6b7280, #6366f1)",
+            boxShadow: "none",
           }}
         />
       </motion.div>
@@ -73,7 +73,7 @@ export default function CustomCursor() {
         <div
           className="w-8 h-8 rounded-full"
           style={{
-            border: "1px solid rgba(0, 240, 255, 0.6)",
+            border: "1px solid rgba(107, 114, 128, 0.3)",
             boxShadow: "0 0 10px rgba(0,240,255,0.2)",
           }}
         />

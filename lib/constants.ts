@@ -3,16 +3,18 @@ export const siteConfig = {
   tagline: "Building the Future of Cybersecurity & AI",
   description:
     "Geetorus is a next-generation cybersecurity, AI tools, and education startup building secure digital solutions for the modern world.",
-  url: "https://geetorus.com",
+  url: "https://geetorus.netlify.app",
   founder: "Udhayakumar V",
+  founderPortfolio: "https://udhayauk-2907.netlify.app/",
   founderTitle: "CEO & Founder",
-  email: "contact@geetorus.com",
+  founderImage: "/founder.png",
+  email: "Geetorus@gmail.com",
   location: "Erode, Tamil Nadu, India",
   socials: {
     github: "https://github.com/Unknownboy0",
-    linkedin: "https://linkedin.com/in/udhayauk-2907",
+    linkedin: "https://www.linkedin.com/company/geetorus",
     twitter: "https://twitter.com/geetorus",
-    instagram: "https://instagram.com/geetorus",
+    instagram: "https://instagram.com/_geetorus_",
   },
 };
 
@@ -163,7 +165,7 @@ export const products = [
 
 export const stats = [
   { label: "Security Audits", value: 120, suffix: "+" },
-  { label: "CVEs Found", value: 47, suffix: "" },
+  { label: "Vulnerabilities Prevented", value: 320, suffix: "+" },
   { label: "Clients Protected", value: 200, suffix: "+" },
   { label: "Workshop Students", value: 1500, suffix: "+" },
 ];

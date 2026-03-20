@@ -31,20 +31,20 @@ export default function GlowButton({
 
   const styles = {
     primary: {
-      background: "linear-gradient(135deg, #00f0ff, #8b5cf6)",
-      boxShadow: "0 0 20px rgba(0,240,255,0.3), 0 0 40px rgba(0,240,255,0.1)",
+      background: "linear-gradient(135deg, #6b7280, #6366f1)",
+      boxShadow: "none",
       color: "#0a0a0a",
     },
     secondary: {
-      background: "linear-gradient(135deg, #00ff9f, #00f0ff)",
-      boxShadow: "0 0 20px rgba(0,255,159,0.3), 0 0 40px rgba(0,255,159,0.1)",
+      background: "linear-gradient(135deg, #10b981, #6b7280)",
+      boxShadow: "none",
       color: "#0a0a0a",
     },
     outline: {
       background: "transparent",
-      boxShadow: "0 0 15px rgba(0,240,255,0.1)",
-      color: "#00f0ff",
-      border: "1px solid rgba(0,240,255,0.4)",
+      boxShadow: "none",
+      color: "#6b7280",
+      border: "1px solid rgba(107,114,128,0.3)",
     },
   };
 

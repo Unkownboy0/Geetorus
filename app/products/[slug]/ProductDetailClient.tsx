@@ -28,9 +28,9 @@ const iconMap: Record<string, React.ReactNode> = {
 };
 
 const colorMap = {
-  blue: { text: "#00f0ff", bg: "rgba(0,240,255,0.08)", border: "rgba(0,240,255,0.25)", glow: "rgba(0,240,255,0.15)" },
-  green: { text: "#00ff9f", bg: "rgba(0,255,159,0.08)", border: "rgba(0,255,159,0.25)", glow: "rgba(0,255,159,0.15)" },
-  purple: { text: "#8b5cf6", bg: "rgba(139,92,246,0.08)", border: "rgba(139,92,246,0.25)", glow: "rgba(139,92,246,0.15)" },
+  blue: { text: "#6b7280", bg: "rgba(107,114,128,0.08)", border: "rgba(107,114,128,0.15)", glow: "rgba(107,114,128,0.05)" },
+  green: { text: "#10b981", bg: "rgba(16,185,129,0.08)", border: "rgba(16,185,129,0.15)", glow: "rgba(16,185,129,0.05)" },
+  purple: { text: "#6366f1", bg: "rgba(99,102,241,0.08)", border: "rgba(99,102,241,0.15)", glow: "rgba(99,102,241,0.05)" },
 };
 
 export default function ProductDetailClient({ product }: { product: Product }) {

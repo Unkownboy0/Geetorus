@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Github, Linkedin, Twitter, Shield, Cpu, GraduationCap, Target, Zap, Globe, ChevronDown } from "lucide-react";
@@ -24,9 +25,9 @@ const values = [
 ];
 
 const colorMap = {
-  blue: { text: "#00f0ff", bg: "rgba(0,240,255,0.08)", border: "rgba(0,240,255,0.2)" },
-  green: { text: "#00ff9f", bg: "rgba(0,255,159,0.08)", border: "rgba(0,255,159,0.2)" },
-  purple: { text: "#8b5cf6", bg: "rgba(139,92,246,0.08)", border: "rgba(139,92,246,0.2)" },
+  blue: { text: "#6b7280", bg: "rgba(107,114,128,0.08)", border: "rgba(107,114,128,0.2)" },
+  green: { text: "#10b981", bg: "rgba(16,185,129,0.08)", border: "rgba(16,185,129,0.2)" },
+  purple: { text: "#6366f1", bg: "rgba(99,102,241,0.08)", border: "rgba(99,102,241,0.2)" },
 };
 
 export default function AboutPageClient() {
@@ -38,7 +39,7 @@ export default function AboutPageClient() {
       <section className="relative py-20 overflow-hidden">
         <div
           className="absolute inset-0 cyber-grid opacity-30"
-          style={{ background: "radial-gradient(ellipse 80% 40% at 50% 0%, rgba(0,240,255,0.06), transparent)" }}
+          style={{ background: "radial-gradient(ellipse 80% 40% at 50% 0%, rgba(107,114,128,0.06), transparent)" }}
         />
         <div className="relative z-10 section-container text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
@@ -65,25 +66,31 @@ export default function AboutPageClient() {
               <div className="relative">
                 <div
                   className="w-72 h-72 md:w-96 md:h-96 mx-auto rounded-2xl relative overflow-hidden"
-                  style={{ border: "1px solid rgba(0,240,255,0.2)", boxShadow: "0 0 50px rgba(0,240,255,0.1)" }}
+                  style={{ border: "1px solid rgba(107,114,128,0.2)", boxShadow: "none" }}
                 >
                   <div
                     className="absolute inset-0 flex flex-col items-center justify-center"
                     style={{ background: "linear-gradient(135deg, rgba(0,240,255,0.05), rgba(139,92,246,0.05))" }}
                   >
-                    <div className="w-32 h-32 rounded-full mb-4 flex items-center justify-center text-5xl font-black gradient-text-blue"
-                      style={{ background: "rgba(0,240,255,0.08)", border: "2px solid rgba(0,240,255,0.2)" }}>
-                      UK
+                    <div className="w-32 h-32 rounded-full mb-4 overflow-hidden border-2" style={{ borderColor: "rgba(107,114,128,0.2)" }}>
+                      <Image
+                        src={siteConfig.founderImage}
+                        alt={`Photo of ${siteConfig.founder}`}
+                        width={128}
+                        height={128}
+                        className="object-cover"
+                        priority
+                      />
                     </div>
                     <h3 className="text-xl font-bold text-white">{siteConfig.founder}</h3>
-                    <p className="text-sm text-[#00f0ff]">{siteConfig.founderTitle}</p>
+                    <p className="text-sm text-[#6b7280]">{siteConfig.founderTitle}</p>
                     <p className="text-xs text-gray-600 mt-1">{siteConfig.location}</p>
                   </div>
                   {/* Corner accents */}
-                  <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-[#00f0ff] rounded-tl-xl opacity-60" />
-                  <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-[#00f0ff] rounded-tr-xl opacity-60" />
-                  <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-[#8b5cf6] rounded-bl-xl opacity-60" />
-                  <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-[#8b5cf6] rounded-br-xl opacity-60" />
+                  <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-[#6b7280] rounded-tl-xl opacity-40" />
+                  <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-[#6b7280] rounded-tr-xl opacity-40" />
+                  <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-[#6366f1] rounded-bl-xl opacity-40" />
+                  <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-[#6366f1] rounded-br-xl opacity-40" />
                 </div>
                 {/* Floating skill badges */}
                 {["Ethical Hacker", "AI Builder", "Startup CEO"].map((skill, i) => (
@@ -91,8 +98,8 @@ export default function AboutPageClient() {
                     key={skill}
                     className="absolute px-3 py-1.5 rounded-lg text-xs font-semibold glass"
                     style={{
-                      color: ["#00f0ff", "#00ff9f", "#8b5cf6"][i],
-                      border: `1px solid ${["rgba(0,240,255,0.3)", "rgba(0,255,159,0.3)", "rgba(139,92,246,0.3)"][i]}`,
+                      color: ["#6b7280", "#10b981", "#6366f1"][i],
+                      border: `1px solid ${["rgba(107,114,128,0.3)", "rgba(16,185,129,0.3)", "rgba(99,102,241,0.3)"][i]}`,
                       top: `${[15, 65, 80][i]}%`,
                       left: i === 1 ? "auto" : `${i === 0 ? -10 : -10}%`,
                       right: i === 1 ? "-5%" : "auto",
@@ -113,7 +120,7 @@ export default function AboutPageClient() {
                 <span className="gradient-text-blue">Security Expert</span>
               </h2>
               <p className="text-gray-500 leading-relaxed mb-4">
-                Udhayakumar V — known online as <span className="text-[#00f0ff] font-medium">Unknownboy0</span> — is a B.Tech (IT) student and the CEO & Founder of Geetorus. Based in Erode, Tamil Nadu, he began his cybersecurity journey during his first year of engineering.
+                Udhayakumar V — known online as <span className="text-[#6b7280] font-medium">Unknownboy0</span> — is a B.Tech (IT) student and the CEO & Founder of Geetorus. Based in Erode, Tamil Nadu, he began his cybersecurity journey during his first year of engineering.
               </p>
               <p className="text-gray-500 leading-relaxed mb-4">
                 A self-taught ethical hacker, he has discovered and responsibly disclosed multiple CVEs, conducted cybersecurity workshops for 1500+ students, and built AI-powered security tools — all while still pursuing his degree.
@@ -132,7 +139,7 @@ export default function AboutPageClient() {
                       Currently studying at <span className="text-white font-medium">Al-Ameen Engineering College</span>, Udhayakumar is an ambitious multidomain expert identifying as a future CISO, experienced network engineer, InfoSec researcher, data engineer, and AI explorer.
                     </p>
                     <p className="text-gray-500 leading-relaxed mb-4">
-                      He is the driving force behind <span className="text-[#00ff9f] font-medium">Geetorus LearnHub</span>, an exclusive digital ecosystem equipping the next generation of tech leaders with a "Security-First" mindset, bridging the crucial gap between traditional software development and advanced proactive cybersecurity.
+                      He is the driving force behind <span className="text-[#10b981] font-medium">Geetorus LearnHub</span>, an exclusive digital ecosystem equipping the next generation of tech leaders with a "Security-First" mindset, bridging the crucial gap between traditional software development and advanced proactive cybersecurity.
                     </p>
                     <p className="text-gray-500 leading-relaxed mb-6">
                       Geetorus is the ultimate culmination of this vision: a platform that combines cutting-edge security services, AI tooling, and powerful accessible education to create the next generation of cyber defenders.
@@ -144,7 +151,7 @@ export default function AboutPageClient() {
               {!isExpanded ? (
                 <button
                   onClick={() => setIsExpanded(true)}
-                  className="flex items-center gap-2 text-[#00f0ff] font-semibold text-sm mb-6 hover:text-white transition-colors cursor-pointer"
+                  className="flex items-center gap-2 text-[#6b7280] font-semibold text-sm mb-6 hover:text-white transition-colors cursor-pointer"
                 >
                   Read More
                   <ChevronDown size={16} />
@@ -152,7 +159,7 @@ export default function AboutPageClient() {
               ) : (
                 <button
                   onClick={() => setIsExpanded(false)}
-                  className="flex items-center gap-2 text-[#00f0ff] font-semibold text-sm mb-6 hover:text-white transition-colors cursor-pointer"
+                  className="flex items-center gap-2 text-[#6b7280] font-semibold text-sm mb-6 hover:text-white transition-colors cursor-pointer"
                 >
                   Read Less
                   <motion.div animate={{ rotate: 180 }} transition={{ duration: 0.3 }}>
@@ -172,7 +179,7 @@ export default function AboutPageClient() {
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center w-10 h-10 rounded-xl text-gray-400 hover:text-[#00f0ff] transition-all hover:scale-110"
+                    className="flex items-center justify-center w-10 h-10 rounded-xl text-gray-400 hover:text-[#6b7280] transition-all hover:scale-110"
                     style={{ border: "1px solid rgba(255,255,255,0.08)" }}
                   >
                     {icon}
@@ -198,7 +205,7 @@ export default function AboutPageClient() {
             {/* Center line */}
             <div
               className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px md:-translate-x-1/2"
-              style={{ background: "linear-gradient(180deg, #00f0ff, #8b5cf6, #00ff9f)" }}
+              style={{ background: "linear-gradient(180deg, #6b7280, #6366f1, #10b981)" }}
             />
             <div className="space-y-12">
               {timeline.map((item, i) => {
@@ -251,8 +258,8 @@ export default function AboutPageClient() {
             <ScrollReveal direction="left">
               <GlassCard className="p-10 h-full" glowColor="blue">
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6"
-                  style={{ background: "rgba(0,240,255,0.1)", border: "1px solid rgba(0,240,255,0.2)" }}>
-                  <Cpu size={22} className="text-[#00f0ff]" />
+                  style={{ background: "rgba(107,114,128,0.1)", border: "1px solid rgba(107,114,128,0.2)" }}>
+                  <Cpu size={22} className="text-[#6b7280]" />
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-4">Our Vision</h3>
                 <p className="text-gray-500 leading-relaxed">
@@ -263,8 +270,8 @@ export default function AboutPageClient() {
             <ScrollReveal direction="right">
               <GlassCard className="p-10 h-full" glowColor="green">
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6"
-                  style={{ background: "rgba(0,255,159,0.1)", border: "1px solid rgba(0,255,159,0.2)" }}>
-                  <GraduationCap size={22} className="text-[#00ff9f]" />
+                  style={{ background: "rgba(16,185,129,0.1)", border: "1px solid rgba(16,185,129,0.2)" }}>
+                  <GraduationCap size={22} className="text-[#10b981]" />
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-4">Our Mission</h3>
                 <p className="text-gray-500 leading-relaxed">

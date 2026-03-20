@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 
 interface SectionBadgeProps {
   children: React.ReactNode;
-  color?: "blue" | "green" | "purple";
+  color?: "blue" | "green" | "purple" | "red" | "yellow";
   className?: string;
 }
 
@@ -13,19 +13,29 @@ export default function SectionBadge({
 }: SectionBadgeProps) {
   const colorMap = {
     blue: {
-      background: "rgba(0,240,255,0.08)",
-      border: "rgba(0,240,255,0.25)",
-      color: "#00f0ff",
+      background: "rgba(107,114,128,0.05)",
+      border: "rgba(107,114,128,0.15)",
+      color: "#6b7280",
     },
     green: {
-      background: "rgba(0,255,159,0.08)",
-      border: "rgba(0,255,159,0.25)",
-      color: "#00ff9f",
+      background: "rgba(16,185,129,0.05)",
+      border: "rgba(16,185,129,0.15)",
+      color: "#10b981",
     },
     purple: {
-      background: "rgba(139,92,246,0.08)",
-      border: "rgba(139,92,246,0.25)",
-      color: "#8b5cf6",
+      background: "rgba(99,102,241,0.05)",
+      border: "rgba(99,102,241,0.15)",
+      color: "#6366f1",
+    },
+    red: {
+      background: "rgba(239,68,68,0.05)",
+      border: "rgba(239,68,68,0.15)",
+      color: "#ef4444",
+    },
+    yellow: {
+      background: "rgba(180,83,9,0.05)",
+      border: "rgba(180,83,9,0.15)",
+      color: "#b45309",
     },
   };
 

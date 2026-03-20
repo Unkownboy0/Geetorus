@@ -62,9 +62,9 @@ const productIconMap: Record<string, React.ReactNode> = {
 };
 
 const colorMap = {
-  blue: { text: "#00f0ff", glow: "rgba(0,240,255,0.15)", border: "rgba(0,240,255,0.25)" },
-  green: { text: "#00ff9f", glow: "rgba(0,255,159,0.15)", border: "rgba(0,255,159,0.25)" },
-  purple: { text: "#8b5cf6", glow: "rgba(139,92,246,0.15)", border: "rgba(139,92,246,0.25)" },
+  blue: { text: "#6b7280", glow: "rgba(107,114,128,0.05)", border: "rgba(107,114,128,0.15)" },
+  green: { text: "#10b981", glow: "rgba(16,185,129,0.05)", border: "rgba(16,185,129,0.15)" },
+  purple: { text: "#6366f1", glow: "rgba(99,102,241,0.05)", border: "rgba(99,102,241,0.15)" },
 };
 
 export default function HomePage() {
@@ -79,13 +79,13 @@ export default function HomePage() {
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,240,255,0.08) 0%, transparent 70%)",
+              "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(107,114,128,0.03) 0%, transparent 70%)",
           }}
         />
         <div
           className="absolute bottom-0 left-0 w-1/2 h-1/2 pointer-events-none"
           style={{
-            background: "radial-gradient(ellipse at 0% 100%, rgba(139,92,246,0.08) 0%, transparent 60%)",
+            background: "radial-gradient(ellipse at 0% 100%, rgba(99,102,241,0.03) 0%, transparent 60%)",
           }}
         />
 
@@ -114,7 +114,7 @@ export default function HomePage() {
             <span className="text-white"> & </span>
             <span
               style={{
-                background: "linear-gradient(135deg, #8b5cf6, #f72585)",
+                background: "linear-gradient(135deg, #6366f1, #ec4899)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -144,7 +144,7 @@ export default function HomePage() {
               wrapper="span"
               speed={50}
               repeat={Infinity}
-              style={{ color: "#00f0ff" }}
+              style={{ color: "#6b7280" }}
             />
           </motion.div>
 
@@ -168,8 +168,8 @@ export default function HomePage() {
               href="/products"
               className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-[#0a0a0a] transition-all duration-300 hover:scale-105"
               style={{
-                background: "linear-gradient(135deg, #00f0ff, #8b5cf6)",
-                boxShadow: "0 0 30px rgba(0,240,255,0.3)",
+                background: "linear-gradient(135deg, #6b7280, #6366f1)",
+                boxShadow: "none",
               }}
             >
               Explore Products
@@ -177,7 +177,7 @@ export default function HomePage() {
             </Link>
             <Link
               href="/services"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-[#00f0ff] transition-all duration-300 hover:scale-105 hover:bg-[rgba(0,240,255,0.05)]"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-[#6b7280] transition-all duration-300 hover:scale-105 hover:bg-[rgba(107,114,128,0.05)]"
               style={{ border: "1px solid rgba(0,240,255,0.3)" }}
             >
               Our Services
@@ -194,7 +194,7 @@ export default function HomePage() {
             <motion.div
               animate={{ y: [0, 8, 0] }}
               transition={{ repeat: Infinity, duration: 2 }}
-              className="text-[#00f0ff] opacity-80 flex flex-col items-center gap-2 hover:opacity-100 transition-opacity cursor-pointer drop-shadow-[0_0_8px_rgba(0,240,255,0.6)]"
+              className="text-[#6b7280] opacity-80 flex flex-col items-center gap-2 hover:opacity-100 transition-opacity cursor-pointer"
             >
               <span className="text-xs tracking-widest uppercase font-semibold">Scroll</span>
               <ChevronDown size={20} />
@@ -208,7 +208,7 @@ export default function HomePage() {
         <div
           className="absolute inset-0 cyber-grid opacity-30"
           style={{
-            background: "radial-gradient(ellipse 60% 40% at 50% 50%, rgba(139,92,246,0.04), transparent)",
+            background: "radial-gradient(ellipse 60% 40% at 50% 50%, rgba(99,102,241,0.02), transparent)",
           }}
         />
         <div className="relative z-10 section-container">
@@ -240,7 +240,7 @@ export default function HomePage() {
                         background: c.glow,
                         border: `1px solid ${c.border}`,
                         color: c.text,
-                        boxShadow: `0 0 20px ${c.glow}`,
+                        boxShadow: `none`,
                       }}
                     >
                       {feat.icon}
@@ -260,9 +260,9 @@ export default function HomePage() {
         <div
           className="absolute inset-0"
           style={{
-            background: "linear-gradient(180deg, rgba(0,240,255,0.03) 0%, transparent 100%)",
-            borderTop: "1px solid rgba(0,240,255,0.06)",
-            borderBottom: "1px solid rgba(0,240,255,0.06)",
+            background: "linear-gradient(180deg, rgba(107,114,128,0.02) 0%, transparent 100%)",
+            borderTop: "1px solid rgba(107,114,128,0.05)",
+            borderBottom: "1px solid rgba(107,114,128,0.05)",
           }}
         />
         <div className="relative z-10 section-container">
@@ -272,7 +272,7 @@ export default function HomePage() {
                 <div
                   className="text-5xl md:text-6xl font-black font-poppins mb-2"
                   style={{
-                    background: "linear-gradient(135deg, #00f0ff, #8b5cf6)",
+                    background: "linear-gradient(135deg, #6b7280, #6366f1)",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
@@ -335,7 +335,7 @@ export default function HomePage() {
                           {product.badge}
                         </span>
                       </div>
-                      <h3 className="text-xl font-bold text-white mb-1 group-hover:text-[#00f0ff] transition-colors">
+                      <h3 className="text-xl font-bold text-white mb-1 group-hover:text-[#6b7280] transition-colors">
                         {product.title}
                       </h3>
                       <p className="text-sm mb-3" style={{ color: c.text }}>
@@ -363,7 +363,7 @@ export default function HomePage() {
           <ScrollReveal className="text-center mt-10">
             <Link
               href="/products"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-[#00f0ff] hover:bg-[rgba(0,240,255,0.05)] transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-[#6b7280] hover:bg-[rgba(107,114,128,0.05)] transition-all"
               style={{ border: "1px solid rgba(0,240,255,0.25)" }}
             >
               View All Products <ArrowRight size={16} />
@@ -440,15 +440,15 @@ export default function HomePage() {
                     href="/contact"
                     className="px-8 py-4 rounded-xl font-bold text-[#0a0a0a] hover:scale-105 transition-transform"
                     style={{
-                      background: "linear-gradient(135deg, #00f0ff, #8b5cf6)",
-                      boxShadow: "0 0 30px rgba(0,240,255,0.3)",
+                    background: "linear-gradient(135deg, #6b7280, #6366f1)",
+                    boxShadow: "none",
                     }}
                   >
                     Start a Project
                   </Link>
                   <Link
                     href="/about"
-                    className="px-8 py-4 rounded-xl font-bold text-[#00f0ff] hover:bg-[rgba(0,240,255,0.05)] transition-all"
+                    className="px-8 py-4 rounded-xl font-bold text-[#6b7280] hover:bg-[rgba(107,114,128,0.05)] transition-all"
                     style={{ border: "1px solid rgba(0,240,255,0.3)" }}
                   >
                     Learn About Us

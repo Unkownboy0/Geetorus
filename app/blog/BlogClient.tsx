@@ -8,80 +8,61 @@ import ScrollReveal from "@/components/animations/ScrollReveal";
 import GlassCard from "@/components/ui/GlassCard";
 import SectionBadge from "@/components/ui/SectionBadge";
 
-const posts = [
-  {
-    slug: "introduction-to-ethical-hacking",
-    title: "Introduction to Ethical Hacking: A Complete Beginner's Guide",
-    excerpt: "Learn the fundamentals of ethical hacking, the mindset of a penetration tester, and how to get started with your first security assessment.",
-    category: "Ethical Hacking",
-    tags: ["hacking", "pentesting", "beginner"],
-    readTime: "8 min read",
-    date: "Mar 15, 2026",
-    color: "blue",
-  },
-  {
-    slug: "top-ai-security-tools-2026",
-    title: "Top AI Security Tools Transforming Cybersecurity in 2026",
-    excerpt: "Artificial intelligence is revolutionizing how we detect threats. Here are the top AI-powered security tools every defender should know about.",
-    category: "AI Security",
-    tags: ["AI", "tools", "threat-detection"],
-    readTime: "6 min read",
-    date: "Mar 10, 2026",
-    color: "purple",
-  },
-  {
-    slug: "building-secure-web-apps",
-    title: "Building Secure Web Applications: OWASP Top 10 Decoded",
-    excerpt: "A practical deep-dive into the OWASP Top 10 vulnerabilities, with real examples and code-level fixes for developers.",
-    category: "Web Security",
-    tags: ["OWASP", "web", "developers"],
-    readTime: "12 min read",
-    date: "Mar 5, 2026",
-    color: "green",
-  },
-  {
-    slug: "phishing-detection-ai",
-    title: "How AI Detects Phishing Links: Behind the Scenes",
-    excerpt: "An inside look at how Geetorus's Secure Link Detection System uses machine learning to identify phishing URLs in real time.",
-    category: "AI Security",
-    tags: ["AI", "phishing", "ML"],
-    readTime: "7 min read",
-    date: "Feb 28, 2026",
-    color: "blue",
-  },
-  {
-    slug: "ctf-tips-beginners",
-    title: "5 Essential Tips for Your First CTF Competition",
-    excerpt: "Capture The Flag competitions are the fastest way to level up your hacking skills. Here's how to approach your first one.",
-    category: "Education",
-    tags: ["CTF", "competitions", "tips"],
-    readTime: "5 min read",
-    date: "Feb 20, 2026",
-    color: "purple",
-  },
-  {
-    slug: "network-security-fundamentals",
-    title: "Network Security Fundamentals Every Developer Must Know",
-    excerpt: "From firewalls to VPNs, understanding network security is essential for building production-ready applications.",
-    category: "Web Security",
-    tags: ["network", "fundamentals", "security"],
-    readTime: "9 min read",
-    date: "Feb 10, 2026",
-    color: "green",
-  },
-];
+import { blogPosts } from "@/lib/blogPosts";
 
 const colorMap = {
-  blue: { text: "#00f0ff", bg: "rgba(0,240,255,0.08)", border: "rgba(0,240,255,0.2)" },
-  green: { text: "#00ff9f", bg: "rgba(0,255,159,0.08)", border: "rgba(0,255,159,0.2)" },
-  purple: { text: "#8b5cf6", bg: "rgba(139,92,246,0.08)", border: "rgba(139,92,246,0.2)" },
+  blue: { text: "#6b7280", bg: "rgba(107,114,128,0.08)", border: "rgba(107,114,128,0.2)" },
+  green: { text: "#10b981", bg: "rgba(16,185,129,0.08)", border: "rgba(16,185,129,0.2)" },
+  purple: { text: "#6366f1", bg: "rgba(99,102,241,0.08)", border: "rgba(99,102,241,0.2)" },
+  red: { text: "#f87171", bg: "rgba(248,113,113,0.08)", border: "rgba(248,113,113,0.2)" },
+  yellow: { text: "#facc15", bg: "rgba(250,204,21,0.08)", border: "rgba(250,204,21,0.2)" },
 };
 
 export default function BlogClient() {
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [message, setMessage] = useState<string>("");
 
-  const filtered = posts.filter((p) => {
+  const isValidEmail = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+
+  const handleSubscribe = async () => {
+    if (!isValidEmail(email)) {
+      setStatus("error");
+      setMessage("Please enter a valid email address.");
+      return;
+    }
+
+    setStatus("sending");
+    setMessage("");
+
+    try {
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data?.success) {
+        setStatus("error");
+        setMessage(data?.error || "Something went wrong. Please try again later.");
+        return;
+      }
+
+      setStatus("sent");
+      setMessage(data?.message || "Thanks! You are now subscribed.");
+      setEmail("");
+    } catch (err) {
+      console.error(err);
+      setStatus("error");
+      setMessage("Unable to subscribe right now. Please try again later.");
+    }
+  };
+
+  const filtered = blogPosts.filter((p) => {
     const matchSearch =
       p.title.toLowerCase().includes(search.toLowerCase()) ||
       p.excerpt.toLowerCase().includes(search.toLowerCase()) ||
@@ -114,7 +95,7 @@ export default function BlogClient() {
                 placeholder="Search articles..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full pl-12 pr-6 py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-[#00f0ff]/40 transition-colors text-sm backdrop-blur-sm"
+                className="w-full pl-12 pr-6 py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-[#6b7280]/40 transition-colors text-sm backdrop-blur-sm"
                 style={{ background: "rgba(255,255,255,0.04)" }}
               />
             </div>
@@ -139,7 +120,7 @@ export default function BlogClient() {
                     <Link href={`/blog/${post.slug}`} className="block h-full">
                       <GlassCard
                         className="p-8 h-full group cursor-pointer flex flex-col transition-transform hover:-translate-y-2"
-                        glowColor={post.color as "blue" | "green" | "purple"}
+                        glowColor={(post.color as "blue" | "green" | "purple" | "red" | "yellow") ?? "blue"}
                       >
                         {/* Category badge */}
                         <div className="flex items-center justify-between mb-4">
@@ -154,7 +135,7 @@ export default function BlogClient() {
                           </span>
                         </div>
 
-                        <h3 className="text-lg font-bold text-white mb-3 leading-snug group-hover:text-[#00f0ff] transition-colors line-clamp-2">
+                        <h3 className="text-lg font-bold text-white mb-3 leading-snug group-hover:text-[#6b7280] transition-colors line-clamp-2">
                           {post.title}
                         </h3>
                         <p className="text-sm text-gray-500 leading-relaxed mb-4 flex-1 line-clamp-3">
@@ -209,16 +190,24 @@ export default function BlogClient() {
                   <input
                     type="email"
                     placeholder="Your email address"
-                    className="flex-1 px-4 py-3 rounded-xl text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#00f0ff]/40 transition-colors"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="flex-1 px-4 py-3 rounded-xl text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#6b7280]/40 transition-colors"
                     style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}
                   />
                   <button
-                    className="px-6 py-3 rounded-xl font-bold text-[#0a0a0a] text-sm hover:scale-105 transition-transform flex items-center gap-2"
-                    style={{ background: "linear-gradient(135deg, #00f0ff, #8b5cf6)" }}
+                    type="button"
+                    onClick={handleSubscribe}
+                    disabled={status === "sending"}
+                    className="px-6 py-3 rounded-xl font-bold text-[#0a0a0a] text-sm hover:scale-105 transition-transform flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                    style={{ background: "linear-gradient(135deg, #6b7280, #6366f1)" }}
                   >
-                    Subscribe <ChevronRight size={16} />
+                    {status === "sending" ? "Sending..." : "Subscribe"} <ChevronRight size={16} />
                   </button>
                 </div>
+                {message && (
+                  <p className={`mt-4 text-sm ${status === "error" ? "text-red-400" : "text-green-400"}`}>{message}</p>
+                )}
               </div>
             </div>
           </ScrollReveal>
