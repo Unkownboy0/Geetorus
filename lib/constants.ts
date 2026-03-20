@@ -14,7 +14,7 @@ export const siteConfig = {
   tagline: "Building the Future of Cybersecurity & AI",
   description:
     "Geetorus is a next-generation cybersecurity, AI tools, and education startup building secure digital solutions for the modern world.",
-  url: "https://geetorus.netlify.app",
+  url: "https://geetorus.vercel.app",
   founder: "Udhayakumar V",
   founderPortfolio: "https://udhayauk-2907.netlify.app/",
   founderTitle: "CEO & Founder",
